@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: nginx.dockerfile
+    ports:
+      - "25080:80"
+    volumes:
+      - ./.config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.data/nginx:/var/log/nginx
+      - ./.data/xenforo/internal:/var/www/html/internal_data
+      - ./.data/xenforo/external:/var/www/html/data
+      - ./xenforo:/var/www/html
+    links:
+      - php
+  php:
+    build:
+      context: ./
+      dockerfile: php.dockerfile
+    volumes:
+      - ./xenforo:/var/www/html
+      - ./addons:/var/www/html/src/addons
+      - ./xenforo/src/addons/XF:/var/www/html/src/addons/XF
+      - ./.data/xenforo/internal:/var/www/html/internal_data
+      - ./.data/xenforo/external:/var/www/html/data
+      - ./.data/composer:/root/.composer
+    links:
+      - mysql
+  mysql:
+    build:
+      context: ./
+      dockerfile: mysql.dockerfile
+    volumes:
+      - ./.data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'xenforo2'
+      MYSQL_DATABASE: 'xenforo2'
+    ports:
+      - "33069:3306"
