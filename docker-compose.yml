@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: nginx.dockerfile
     ports:
-      - "25080:80"
+      - "10080:80"
     volumes:
       - ./.config/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./.data/nginx:/var/log/nginx
@@ -28,16 +28,15 @@ services:
       - ./.data/composer:/root/.composer
     links:
       - mysql
+    env_file:
+      - .env
   mysql:
     build:
       context: ./
       dockerfile: mysql.dockerfile
     volumes:
       - ./.data/mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'xenforo2'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
+    env_file:
+      - .env
     ports:
       - "33069:3306"

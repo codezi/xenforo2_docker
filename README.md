@@ -1,7 +1,7 @@
 ## XenForo 2 with Docker
 
 Installed:
-- PHP 8.0.2
+- PHP 8.0.8
   * Mysqli
   * GD
   * Imagick
@@ -27,7 +27,7 @@ Clone this repository to your computer then run
 
 to build images and run `docker-compose up -d` to start web server.
 
-Open browser `http://localhost:25080` and coding...
+Open browser `http://localhost:10080` and coding...
 
 ### Install add-on
 To store add-on directories correctly:
