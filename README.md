@@ -18,6 +18,7 @@ Put XenForo source code to folder `/xenforo`. Any new add-ons will be stored in 
 - XenForo (internal_data, data) store at `.data/xenforo`
 - Mysql data store to `.data/mysql`
 - Nginx logging store to `.data/nginx`
+- XenForo add-ons store at `/addons`
 
 ### Installation
 
@@ -27,3 +28,9 @@ Clone this repository to your computer then run
 to build images and run `docker-compose up -d` to start web server.
 
 Open browser `http://localhost:25080` and coding...
+
+### Install add-on
+To store add-on directories correctly:
+- Copy folder `/src/addons/<AddOnId>` to `/addons/<AddOnId>`
+- Copy folder `/js/...` to `/xenforo/js/...`
+- Copy folder `/styles/...` to `/xenforo/styles/...`
