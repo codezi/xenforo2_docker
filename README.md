@@ -34,3 +34,17 @@ To store add-on directories correctly:
 - Copy folder `/src/addons/<AddOnId>` to `/addons/<AddOnId>`
 - Copy folder `/js/...` to `/xenforo/js/...`
 - Copy folder `/styles/...` to `/xenforo/styles/...`
+
+### config.php
+
+Update your XenForo `config.php` with these values.
+
+```php
+
+$config['db']['host'] = 'mysql';
+$config['db']['port'] = '3306';
+$config['db']['username'] = $_SERVER['MYSQL_USER'];
+$config['db']['password'] = $_SERVER['MYSQL_PASSWORD'];
+$config['db']['dbname'] = $_SERVER['MYSQL_DATABASE'];
+
+```

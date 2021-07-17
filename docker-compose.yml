@@ -35,7 +35,9 @@ services:
     volumes:
       - ./.data/mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 'xenforo2'
+      MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'xenforo2'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
     ports:
       - "33069:3306"
