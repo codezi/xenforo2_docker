@@ -1,4 +1,6 @@
 ## XenForo 2 with Docker
+This is basic docker setup for XenForo 2.
+
 
 Installed:
 - PHP 8.0.8
