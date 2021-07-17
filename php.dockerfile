@@ -39,25 +39,4 @@ RUN mkdir -p /usr/src/php/ext/imagick; \
     curl -fsSL https://github.com/Imagick/imagick/archive/448c1cd0d58ba2838b9b6dff71c9b7e70a401b90.tar.gz | tar xvz -C "/usr/src/php/ext/imagick" --strip 1; \
     docker-php-ext-install imagick
 
-# https://github.com/xfrocks/DevHelper/blob/xf2/Dockerfile
-RUN composer global require \
-        phpstan/phpstan:0.12.38 \
-        phpstan/phpstan-strict-rules:0.12.4 \
-        friendsofphp/php-cs-fixer \
-        && mv /root/.composer/vendor /etc/devhelper-composer-vendor
-
-RUN apt-get install -y nodejs \
-	&& apt-get install -y build-essential \
-	&& curl https://www.npmjs.com/install.sh | sh
-
-# Install https://github.com/mishoo/UglifyJS2 global
-RUN npm install uglify-js -g && npm install prettier -g
-
-COPY ./addons/DevHelper/docker /temp/scripts
-COPY ./scripts /temp/scripts
-
-RUN chmod a+x /temp/scripts/*
-
-ENV PATH="/temp/scripts:/root/.composer/vendor/bin:${PATH}"
-
 WORKDIR "/var/www/html/src/addons"
