@@ -27,13 +27,11 @@ services:
       - ./.data/xenforo/external:/var/www/html/data
       - ./.data/composer:/root/.composer
     links:
-      - mysql
+      - mariadb
     env_file:
       - .env
-  mysql:
-    build:
-      context: ./
-      dockerfile: mysql.dockerfile
+  mariadb:
+    image: mariadb:10.6.3
     volumes:
       - ./.data/mysql:/var/lib/mysql
     env_file:

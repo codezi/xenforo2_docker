@@ -43,10 +43,10 @@ Update your XenForo `config.php` with these values.
 
 ```php
 
-$config['db']['host'] = 'mysql';
+$config['db']['host'] = 'mariadb';
 $config['db']['port'] = '3306';
-$config['db']['username'] = $_SERVER['MYSQL_USER'];
-$config['db']['password'] = $_SERVER['MYSQL_PASSWORD'];
-$config['db']['dbname'] = $_SERVER['MYSQL_DATABASE'];
+$config['db']['username'] = $_SERVER['MARIADB_USER'];
+$config['db']['password'] = $_SERVER['MARIADB_PASSWORD'];
+$config['db']['dbname'] = $_SERVER['MARIADB_DATABASE'];
 
 ```
